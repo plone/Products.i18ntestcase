@@ -9,7 +9,7 @@ http://svn.nuxeo.org/trac/pub/file/CPSI18n/trunk/tests/translations.py
 """
 
 import os, os.path, re
-import i18ntestcase
+import I18NTestCase
 from popen2 import popen4
 
 MSGID_REGEXP = re.compile('msgid "(.*?)".*?msgstr "', re.DOTALL)

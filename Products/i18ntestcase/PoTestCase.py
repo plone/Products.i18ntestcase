@@ -1,5 +1,5 @@
 import os, re
-import i18ntestcase
+import I18NTestCase
 from I18NTestCase import getFileFromPath, getLanguageFromPath
 
 from popen2 import popen4
