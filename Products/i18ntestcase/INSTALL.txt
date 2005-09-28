@@ -1,0 +1,20 @@
+Installation Instructions for i18ntestcase
+
+    - Requires Python 2.3 and Zope 2.7 or higher.
+
+    - Requires ZopeTestCase 0.9.8 or higher.
+
+    - Requires i18ndude 2.0 or higher. i18ndude 1.x or lower is NOT supported.
+
+    - Requires PlacelessTranslationService 1.2.1 or higher.
+
+    - Requires a system binary in your path: msgcmp
+
+      If you are on Windows you can get these for example
+      from http://gnuwin32.sourceforge.net/. You'll need the
+      gettext packages.
+
+Extract the tarball into the 'Products' directory of a Zope instance
+
+Now you can copy the test_i18n.py to your tests directory and you should
+have automagically all those nice unit tests.

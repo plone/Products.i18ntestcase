@@ -1,0 +1,38 @@
+Changelog for i18ntestcase
+
+    (name of developer listed in brackets)
+
+i18ntestcase 0.3 - unreleased
+
+    - Lower-cased package name, to conform to Zope3/Python style
+      [hannosch]
+
+    - Fixed an issue with getPoFiles not being strict enough on product
+      matching, resulting in plonelanguagetool po's found for the plone product
+      [hannosch]
+
+    - Move to new default comments (#. Default: "") instead of old original
+      comments (# Original: "").
+      [hannosch]
+
+    - Adopted syntax for i18ndude 2.0. From this point forward i18ndude 1.x
+      is not supported anymore.
+      [hannosch]
+
+    - Optimized slightly for speed (approx. 5% faster)
+      [hannosch]
+
+I18NTestCase 0.2 - released September 3, 2005
+
+    - Got rid of a bunch of external binary dependencies by replacing the 
+      testNoDuplicateMsgId() test by the Python-only version taken from CPS.
+      [hannosch]
+
+    - Reordered the "if __name__ == '__main__':" magic calls in a way that
+      calling the test_i18n.py script directly also works.
+      [hannosch]
+
+I18NTestCase 0.1 - released August 28, 2005
+
+    - Tagged and released v0.1
+      [hannosch]
