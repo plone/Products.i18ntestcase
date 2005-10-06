@@ -2,7 +2,7 @@ Changelog for i18ntestcase
 
     (name of developer listed in brackets)
 
-i18ntestcase 0.3 - unreleased
+i18ntestcase 1.0 - released October 5, 2005
 
     - Lower-cased package name, to conform to Zope3/Python style
       [hannosch]
