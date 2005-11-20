@@ -2,7 +2,7 @@ Changelog for i18ntestcase
 
     (name of developer listed in brackets)
 
-i18ntestcase 1.1 - unreleased
+i18ntestcase 1.1 - released November 20, 2005
 
     - Finally made running tests via 'zopectl test' work.
       [hannosch]
