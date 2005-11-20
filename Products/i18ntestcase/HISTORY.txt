@@ -4,6 +4,9 @@ Changelog for i18ntestcase
 
 i18ntestcase 1.1 - unreleased
 
+    - Finally made running tests via 'zopectl test' work.
+      [hannosch]
+
     - Got rid of the last external binary dependency. Provided much nicer error
       messages for missing or additional messages in comparision of pot and po
       files. At least on Windows this results in a major speed improvement
