@@ -4,7 +4,11 @@ Changelog for i18ntestcase
 
 i18ntestcase 1.1 - unreleased
 
-    - 
+    - Got rid of the last external binary dependency. Provided much nicer error
+      messages for missing or additional messages in comparision of pot and po
+      files. At least on Windows this results in a major speed improvement
+      (16 sec now, 150 sec before)!
+      [hannosch]
 
 i18ntestcase 1.0 - released October 5, 2005
 

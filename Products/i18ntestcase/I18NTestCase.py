@@ -3,6 +3,7 @@
 #
 
 from Testing import ZopeTestCase
+import unittest
 from glob import glob
 import os, re, sys
 import os.path
@@ -58,7 +59,7 @@ def getPoFiles(path='..', product=''):
     poFiles=glob(os.path.join(i18nPath, '%s-*.po' % product))
     return poFiles
 
-class I18NTestCase(ZopeTestCase.ZopeTestCase):
+class I18NTestCase(unittest.TestCase):
     '''Base test case for i18n testing'''
 
     # html entities as they appear in templates

@@ -8,12 +8,6 @@ Installation Instructions for i18ntestcase
 
     - Requires PlacelessTranslationService 1.2.1 or higher.
 
-    - Requires a system binary in your path: msgcmp
-
-      If you are on Windows you can get these for example
-      from http://gnuwin32.sourceforge.net/. You'll need the
-      gettext packages.
-
 Extract the tarball into the 'Products' directory of a Zope instance
 
 Now you can copy the test_i18n.py to your tests directory and you should

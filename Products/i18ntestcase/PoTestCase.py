@@ -2,48 +2,22 @@ import os, re
 import I18NTestCase
 from I18NTestCase import getFileFromPath, getLanguageFromPath
 
-from popen2 import popen4
 from gettext import GNUTranslations
 from Products.PlacelessTranslationService import msgfmt
 from i18ndude import catalog
-
-class PotPoTestCase(I18NTestCase.I18NTestCase):
-    pot = None
-    po = None
-    path = os.curdir
-
-    def testMsgExists(self):
-        """Check that the pot file has the same msgids as the po file"""
-        po = self.po
-        poName = os.path.split(po)[-1]
-        pot = self.pot
-        poEnglish = '%s-en.po' % pot[:-4]
-        path = os.path.normpath(self.path)
-        if not po.endswith(poEnglish):
-            os.environ['LC_ALL']='C'
-            o,i = popen4('msgcmp --directory=%s %s %s' % (path, poName, pot))
-            del os.environ['LC_ALL']
-            i.close()
-            output = o.read()
-            o.close()
-            if output:
-                output = output.split('\n')
-                if len(output) > 10:
-                    output = output[:10]
-                    output.append('... <more errors>')
-                output = '\n'.join(output)
-                self.fail("Comparing %s with %s using msgcmp resulted in:\n%s" % (
-                              pot, poName, output))
 
 class PoTestCase(I18NTestCase.I18NTestCase):
     po = None
     product = None
     pot_cat = None
+    pot_len = None
 
     def testPoFile(self):
+        """ Testing po file """
         po = self.po
         product = self.product
         pot_cat = self.pot_cat
+        pot_len = self.pot_len
         poName = getFileFromPath(po)
         file = open(po, 'r')
         try:
@@ -76,6 +50,16 @@ class PoTestCase(I18NTestCase.I18NTestCase):
         language = language.replace('_', '-')
         self.failUnless(fileLang == language,
             'The file %s has the wrong name or wrong language code. expected: %s, got: %s' % (poName, language, fileLang))
+
+        if fileLang != 'en':
+            po_cat = catalog.MessageCatalog(filename=po)
+
+            if pot_len != len(po_cat):
+                missing = [msg for msg in pot_cat if msg not in po_cat]
+                additional = [msg for msg in po_cat if msg not in pot_cat]
+
+                self.fail('%s missing and %s additional messages in %s:\nmissing: %s\nadditional: %s'
+                          % (len(missing), len(additional), poName, missing, additional))
 
         msgcatalog = [(msg, tro._catalog.get(msg)) for msg in tro._catalog if msg]
 
