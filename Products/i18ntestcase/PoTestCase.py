@@ -1,6 +1,7 @@
 import os, re
 import I18NTestCase
-from I18NTestCase import getFileFromPath, getLanguageFromPath
+from I18NTestCase import getFileFromPath, getLanguageFromPath, \
+                         getLanguageFromLocalesPath
 
 from gettext import GNUTranslations
 from Products.PlacelessTranslationService import msgfmt
@@ -19,6 +20,10 @@ class PoTestCase(I18NTestCase.I18NTestCase):
         pot_cat = self.pot_cat
         pot_len = self.pot_len
         poName = getFileFromPath(po)
+        localesLayout = False
+        if 'LC_MESSAGES' in po:
+            localesLayout = True
+
         file = open(po, 'r')
         try:
             lines = file.readlines()
@@ -41,15 +46,24 @@ class PoTestCase(I18NTestCase.I18NTestCase):
             self.fail('PoSyntaxError: Invalid po data syntax in file %s:\n%s' % (poName, msg))
 
         domain = tro._info.get('domain', None)
-        self.failUnless(domain, 'Po file %s has no domain!' % po)
+        if localesLayout:
+            self.failIf(domain, 'Po file %s has a domain set inside the file!' % po)
+        else:
+            self.failUnless(domain, 'Po file %s has no domain!' % po)
 
         language = tro._info.get('language-code', None)
-        self.failUnless(language, 'Po file %s has no language!' % po)
+        if localesLayout:
+            self.failIf(language, 'Po file %s has a language set inside!' % po)
+        else:
+            self.failUnless(language, 'Po file %s has no language!' % po)
 
-        fileLang = getLanguageFromPath(po)
-        language = language.replace('_', '-')
-        self.failUnless(fileLang == language,
-            'The file %s has the wrong name or wrong language code. expected: %s, got: %s' % (poName, language, fileLang))
+        if localesLayout:
+            fileLang = getLanguageFromLocalesPath(po)
+        else:
+            fileLang = getLanguageFromPath(po)
+            language = language.replace('_', '-')
+            self.failUnless(fileLang == language,
+                'The file %s has the wrong name or wrong language code. expected: %s, got: %s' % (poName, language, fileLang))
 
         if fileLang != 'en':
             po_cat = catalog.MessageCatalog(filename=po)

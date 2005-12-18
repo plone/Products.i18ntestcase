@@ -9,18 +9,8 @@ import os, re, sys
 import os.path
 import htmlentitydefs
 
-try:
-    import win32api
-    WIN32 = True
-except ImportError:
-    WIN32 = False
-
 def getFileFromPath(path):
-    if WIN32:
-        file = path.split('\\')[-1]
-    else:
-        file = path.split('/')[-1]
-    return file
+    return path.split(os.sep)[-1]
 
 def getLanguageFromPath(path):
     file = getFileFromPath(path)
@@ -28,6 +18,9 @@ def getLanguageFromPath(path):
     file = file[:-3]
     lang = file.split('-')[1:]
     return '-'.join(lang)
+
+def getLanguageFromLocalesPath(path):
+    return path.split(os.sep)[-3]
 
 def getProductFromPath(path):
     file = getFileFromPath(path)
@@ -37,26 +30,34 @@ def getProductFromPath(path):
     return prod
 
 def getPotFiles(path='..'):
-    path = os.path.normpath(path)
-    productPath = os.path.join(path, '..')
-    i18nPath = os.path.join(productPath, 'i18n')
-    if not os.path.isdir(i18nPath):
-        i18nPath = productPath
-    potFiles= glob(os.path.join(i18nPath, '*.pot'))
+    potPath = path
+    i18nPath = os.path.join(path, 'i18n')
+    localesPath = os.path.join(path, 'locales')
+    if os.path.isdir(i18nPath):
+        potPath = i18nPath
+    elif os.path.isdir(localesPath):
+        potPath = localesPath
 
+    potFiles= glob(os.path.join(potPath, '*.pot'))
     potFiles = [pot for pot in potFiles if not (pot.endswith('manual.pot') or pot.endswith('generated.pot') or pot.endswith('combinedchart.pot'))]
+    potFiles = [os.path.normpath(pot) for pot in potFiles]
 
     if not potFiles:
-        raise IOError('No pot files found in %s!' % i18nPath)
+        raise IOError('No pot files found in %s!' % potPath)
     return potFiles
 
 def getPoFiles(path='..', product=''):
-    path = os.path.normpath(path)
-    productPath = os.path.join(path, '..')
-    i18nPath = os.path.join(productPath, 'i18n')
-    if not os.path.isdir(i18nPath):
-        i18nPath = productPath
-    poFiles=glob(os.path.join(i18nPath, '%s-*.po' % product))
+    i18nPath = os.path.join(path, 'i18n')
+    localesPath = os.path.join(path, 'locales')
+    poFiles = []
+    if os.path.isdir(i18nPath):
+        poFiles=glob(os.path.join(i18nPath, '%s-*.po' % product))
+    elif os.path.isdir(localesPath):
+        for root, dirs, files in os.walk(localesPath):
+            pos = glob(os.path.join(root, '%s.po' % product))
+            if pos:
+                poFiles.extend(pos)
+    poFiles = [os.path.normpath(po) for po in poFiles]
     return poFiles
 
 class I18NTestCase(unittest.TestCase):

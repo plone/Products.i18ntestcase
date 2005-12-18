@@ -4,7 +4,9 @@ Changelog for i18ntestcase
 
 i18ntestcase 1.2 - unreleased
 
-    - 
+    - Implemented support for locales folder layout as used by Zope3. If there's
+      a i18n folder inside a product this is used however.
+      [hannosch]
 
 i18ntestcase 1.1 - released November 20, 2005
 

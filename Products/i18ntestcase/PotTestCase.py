@@ -15,14 +15,14 @@ from popen2 import popen4
 MSGID_REGEXP = re.compile('msgid "(.*?)".*?msgstr "', re.DOTALL)
 
 class PotTestCase(I18NTestCase.I18NTestCase):
+    product = None
     pot = None
-    path = os.curdir
-    
+
     def testNoDuplicateMsgId(self):
         """Check that there are no duplicate msgids in the pot files"""
-        pot = '%s.pot' % self.pot
-        path = self.path
-        file = open(os.path.join(path, pot), 'r')
+        product = self.product
+        pot = self.pot
+        file = open(pot, 'r')
         file_content = file.read()
         file.close()
 
@@ -33,7 +33,7 @@ class PotTestCase(I18NTestCase.I18NTestCase):
             msgid = match.group(0)
             if msgid in msgids:
                 assert 0, "Duplicate msgids were found in file \"%s\":\n\n%s" \
-                       % (pot, msgid)
+                       % (product, msgid)
             else:
                 msgids.append(msgid)
 

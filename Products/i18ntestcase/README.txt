@@ -4,8 +4,8 @@ License: GPL
 
 i18ntestcase Readme
 
-    i18ntestcase is build on top of the ZopeTestCase package. It has
-    been developed to simplify testing of i18n files for Plone products.
+    i18ntestcase is build on top of the ZopeTestCase package. It has been
+    developed to simplify testing of gettext i18n files for Zope products.
 
     The i18ntestcase package provides:
 
