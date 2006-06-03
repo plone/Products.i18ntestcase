@@ -64,7 +64,7 @@ class I18NTestCase(unittest.TestCase):
     '''Base test case for i18n testing'''
 
     # html entities as they appear in templates
-    ENTITIES = ['&'+ent+';' for ent in htmlentitydefs.entitydefs if ent not in ['hellip','mdash','trade']]
+    ENTITIES = ['&'+ent+';' for ent in htmlentitydefs.entitydefs if ent not in ['hellip','mdash','reg']]
 
     # these are taken from PTS, used for format testing
     NAME_RE = r"[a-zA-Z][a-zA-Z0-9_]*"
