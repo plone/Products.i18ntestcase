@@ -33,12 +33,12 @@ def getPotFiles(path='..'):
     potPath = path
     i18nPath = os.path.join(path, 'i18n')
     localesPath = os.path.join(path, 'locales')
+    potFiles = []
     if os.path.isdir(i18nPath):
-        potPath = i18nPath
-    elif os.path.isdir(localesPath):
-        potPath = localesPath
+        potFiles.extend(glob(os.path.join(i18nPath, '*.pot')))
+    if os.path.isdir(localesPath):
+        potFiles.extend(glob(os.path.join(localesPath, '*.pot')))
 
-    potFiles= glob(os.path.join(potPath, '*.pot'))
     potFiles = [pot for pot in potFiles if not (pot.endswith('manual.pot') or pot.endswith('generated.pot') or pot.endswith('combinedchart.pot'))]
     potFiles = [os.path.normpath(pot) for pot in potFiles]
 
@@ -52,7 +52,7 @@ def getPoFiles(path='..', product=''):
     poFiles = []
     if os.path.isdir(i18nPath):
         poFiles=glob(os.path.join(i18nPath, '%s-*.po' % product))
-    elif os.path.isdir(localesPath):
+    if os.path.isdir(localesPath):
         for root, dirs, files in os.walk(localesPath):
             pos = glob(os.path.join(root, '%s.po' % product))
             if pos:

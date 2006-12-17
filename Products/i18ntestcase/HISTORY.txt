@@ -4,6 +4,10 @@ Changelog for i18ntestcase
 
 i18ntestcase 1.2 - unreleased
 
+    - Extended support for locales folder. Now both a locales folder and an i18n
+      folder are supported at the same time.
+      [hannosch]
+
     - Added &reg; to the allowed HTML entities and removed &trade;.
       [hannosch]
 
