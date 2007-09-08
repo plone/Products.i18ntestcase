@@ -1,5 +1,5 @@
 i18ntestcase
-(c) 2005, Hanno Schlichting, schlichting@bakb.net
+(c) 2005-2007, Hanno Schlichting (plone@hannosch.info)
 License: GPL
 
 i18ntestcase Readme

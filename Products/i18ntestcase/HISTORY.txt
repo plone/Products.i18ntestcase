@@ -4,15 +4,15 @@ Changelog for i18ntestcase
 
 i18ntestcase 1.2 - unreleased
 
-    - Extended support for locales folder. Now both a locales folder and an i18n
-      folder are supported at the same time.
+    - Extended support for locales folder. Now both a locales folder and an
+      i18n folder are supported at the same time.
       [hannosch]
 
     - Added &reg; to the allowed HTML entities and removed &trade;.
       [hannosch]
 
-    - Implemented support for locales folder layout as used by Zope3. If there's
-      a i18n folder inside a product this is used however.
+    - Implemented support for locales folder layout as used by Zope3. If
+      there's an i18n folder inside a product this is used however.
       [hannosch]
 
 i18ntestcase 1.1 - released November 20, 2005

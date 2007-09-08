@@ -4,7 +4,7 @@ Installation Instructions for i18ntestcase
 
     - Requires ZopeTestCase 0.9.8 or higher.
 
-    - Requires i18ndude 2.0 or higher. i18ndude 1.x or lower is NOT supported.
+    - Requires i18ndude 2.0 or higher.
 
     - Requires PlacelessTranslationService 1.2.1 or higher.
 
