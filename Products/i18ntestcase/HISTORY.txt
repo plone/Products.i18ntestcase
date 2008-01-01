@@ -4,6 +4,9 @@ Changelog for i18ntestcase
 
 i18ntestcase 1.2 - unreleased
 
+    - Moved to a real package layout.
+      [hannosch]
+
     - Extended support for locales folder. Now both a locales folder and an
       i18n folder are supported at the same time.
       [hannosch]
