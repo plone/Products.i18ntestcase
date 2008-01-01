@@ -2,7 +2,7 @@ Changelog for i18ntestcase
 
     (name of developer listed in brackets)
 
-i18ntestcase 1.2 - unreleased
+i18ntestcase 1.2 - released January 1, 2008
 
     - Moved to a real package layout.
       [hannosch]
