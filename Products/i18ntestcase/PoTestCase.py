@@ -63,7 +63,7 @@ class PoTestCase(I18NTestCase.I18NTestCase):
             fileLang = getLanguageFromPath(po)
             language = language.replace('_', '-')
             self.failUnless(fileLang == language,
-                'The file %s has the wrong name or wrong language code. expected: %s, got: %s' % (poName, language, fileLang))
+                'The file %s has the wrong name or wrong language code. expected: %s, got: %s' % (poName, fileLang, language))
 
         if fileLang != 'en':
             po_cat = catalog.MessageCatalog(filename=po)

@@ -65,7 +65,8 @@ class I18NTestCase(unittest.TestCase):
 
     # html entities as they appear in templates
     ENTITIES = ['&'+ent+';' for ent in htmlentitydefs.entitydefs
-                if ent not in ['hellip', 'mdash', 'reg', 'laquo', 'raquo']]
+                if ent not in ['hellip', 'mdash', 'reg',
+                               'laquo', 'raquo', 'lt', 'gt']]
 
     # these are taken from PTS, used for format testing
     NAME_RE = r"[a-zA-Z][a-zA-Z0-9_]*"
@@ -75,7 +76,7 @@ class I18NTestCase(unittest.TestCase):
         # no html-entities in msgstr
         found = [entity for entity in self.ENTITIES if entity in msgstr]
         if len(found) > 0:
-            return (True, 'Error: html-entities %s' % found)
+            return (True, 'Error: HTML-entities %s' % found)
         return (False, None)
 
     def isMalformedMessageVariable(self, msgstr):
