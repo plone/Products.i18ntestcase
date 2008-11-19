@@ -25,8 +25,7 @@ def getLanguageFromLocalesPath(path):
 def getProductFromPath(path):
     file = getFileFromPath(path)
     # strip of .pot
-    file = '-'.join(file.split('.')[:1])
-    prod = '-'.join(file.split('-')[:1])
+    prod = file[:-4]
     return prod
 
 def getPotFiles(path='..'):
