@@ -1,5 +1,10 @@
 Changelog for i18ntestcase
 
+1.3 (Unreleased)
+----------------
+
+- Allow laquo and raquo HTML entities in translations.
+  [hannosch]
 
 1.2 (2008-01-01)
 ----------------
