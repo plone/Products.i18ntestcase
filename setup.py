@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import sys, os
+import os.path
 
 version = '1.3'
 
@@ -8,8 +8,8 @@ setup(name='Products.i18ntestcase',
       description="Products.i18ntestcase is build on top of the ZopeTestCase "
                   "package. It has been developed to simplify testing of "
                   "gettext i18n files for Zope products.",
-      long_description="""\
-      """,
+      long_description=open("README.txt").read() + "\n" +
+                       open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
@@ -18,7 +18,7 @@ setup(name='Products.i18ntestcase',
       keywords='Plone i18n gettext testcase',
       author='Hanno Schlichting',
       author_email='plone-developers@lists.sourceforge.net',
-      url='http://svn.plone.org/svn/collective/Products.i18ntestcase/trunk',
+      url='https://github.com/plone/Products.i18ntestcase',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
