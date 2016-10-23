@@ -7,10 +7,10 @@ from Testing import ZopeTestCase
 from Products.i18ntestcase import PotTestCase, PoTestCase
 from Products.i18ntestcase.I18NTestCase import getPoFiles, getPotFiles, getProductFromPath
 from i18ndude import catalog
-from Globals import package_home
+from App.Common import package_home
 
 GLOBALS = globals()
-PACKAGE_HOME = os.path.normpath(os.path.join(package_home(GLOBALS), '..'))
+PACKAGE_HOME = package_home(GLOBALS)
 
 head, tail = os.path.split(PACKAGE_HOME)
 if tail == 'tests':
