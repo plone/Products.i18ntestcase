@@ -1,5 +1,8 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 import os.path
+
 
 version = '1.3'
 
@@ -32,5 +35,6 @@ setup(
     zip_safe=False,
     install_requires=[
       'setuptools',
+      'six',
     ],
 )

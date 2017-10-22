@@ -1,13 +1,15 @@
 #
 # i18ntestcase
 #
-
-from Testing import ZopeTestCase
-import unittest
 from glob import glob
-import os, re, sys
+from six.moves import html_entities
+
+import os
 import os.path
-import htmlentitydefs
+import re
+import six
+import unittest
+
 
 def getFileFromPath(path):
     return path.split(os.sep)[-1]
@@ -64,7 +66,7 @@ class I18NTestCase(unittest.TestCase):
     '''Base test case for i18n testing'''
 
     # html entities as they appear in templates
-    ENTITIES = ['&'+ent+';' for ent in htmlentitydefs.entitydefs
+    ENTITIES = ['&'+ent+';' for ent in html_entities.entitydefs
                 if ent not in ['hellip', 'mdash', 'reg',
                                'laquo', 'raquo', 'lt', 'gt']]
 
@@ -95,12 +97,9 @@ class I18NTestCase(unittest.TestCase):
 
     def isMessageVariablesMissing(self, msgstr, default_vars=[]):
         # all ${foo}'s from the default should be present in the translation
-        default_vars = [unicode(var) for var in default_vars]
-        msg_vars = [unicode(var) for var in self._interp_regex.findall(msgstr)]
+        default_vars = [six.text_type(var) for var in default_vars]
+        msg_vars = [six.text_type(var) for var in self._interp_regex.findall(msgstr)]
         missing = [var for var in default_vars if var not in msg_vars]
         if missing:
             return (True, 'Warning: Missing message attributes %s' % missing)
         return (False, None)
-
-
-

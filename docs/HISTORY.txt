@@ -3,6 +3,9 @@ Changelog for i18ntestcase
 1.4 (unreleased)
 ----------------
 
+- Imports are Python3 compatible
+  [ale-rt, b4oshany]
+
 - Fix import from Globals that is removed in Zope4.
   [pbauer]
 
