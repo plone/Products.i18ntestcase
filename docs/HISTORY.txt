@@ -3,6 +3,8 @@ Changelog for i18ntestcase
 1.4 (unreleased)
 ----------------
 
+Bug fixes:
+
 - Imports are Python3 compatible
   [ale-rt, b4oshany]
 
