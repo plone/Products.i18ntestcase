@@ -4,7 +4,7 @@ from setuptools import setup
 import os.path
 
 
-version = '1.3'
+version = '1.3.1'
 
 setup(
     name='Products.i18ntestcase',
