@@ -27,22 +27,22 @@ class PoTestCase(I18NTestCase.I18NTestCase):
         file = open(po, 'r')
         try:
             lines = file.readlines()
-        except IOError, msg:
+        except IOError as msg:
             self.fail('Can\'t read po file %s:\n%s' % (poName,msg))
         file.close()
         try:
             mo = msgfmt.Msgfmt(lines)
-        except msgfmt.PoSyntaxError, msg:
+        except msgfmt.PoSyntaxError as msg:
             self.fail('PoSyntaxError: Invalid po data syntax in file %s:\n%s' % (poName, msg))
-        except SyntaxError, msg:
+        except SyntaxError as msg:
             self.fail('SyntaxError: Invalid po data syntax in file %s (Can\'t parse file with eval():\n%s' % (poName, msg))
-        except Exception, msg:
+        except Exception as msg:
             self.fail('Unknown error while parsing the po file %s:\n%s' % (poName, msg))
         try:
             tro = GNUTranslations(mo.getAsFile())
-        except UnicodeDecodeError, msg:
+        except UnicodeDecodeError as msg:
             self.fail('UnicodeDecodeError in file %s:\n%s' % (poName, msg))
-        except msgfmt.PoSyntaxError, msg:
+        except msgfmt.PoSyntaxError as msg:
             self.fail('PoSyntaxError: Invalid po data syntax in file %s:\n%s' % (poName, msg))
 
         domain = tro._info.get('domain', None)

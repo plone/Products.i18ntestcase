@@ -36,6 +36,8 @@
 #     framework()
 #
 ##############################################################################
+from __future__ import print_function
+import os, sys
 
 __version__ = '0.2.3'
 
@@ -74,8 +76,8 @@ if not sys.modules.has_key('Testing'):
             break
         p, d = s and ('','') or os.path.split(p)
     else:
-        print 'Unable to locate Testing package.',
-        print 'You might need to set SOFTWARE_HOME.'
+        print('Unable to locate Testing package.', end=' ')
+        print('You might need to set SOFTWARE_HOME.')
         sys.exit(1)
 
 import Testing, unittest
@@ -88,8 +90,8 @@ if 1:   # Create a new scope
     p = os.path.join(os.path.dirname(Testing.__file__), 'ZopeTestCase')
 
     if not os.path.isdir(p):
-        print 'Unable to locate ZopeTestCase package.',
-        print 'You might need to install ZopeTestCase.'
+        print('Unable to locate ZopeTestCase package.', end=' ')
+        print('You might need to install ZopeTestCase.')
         sys.exit(1)
 
     ztc_common = 'ztc_common.py'
@@ -104,12 +106,11 @@ if 1:   # Create a new scope
         f = 1
 
     if not f:
-        print 'Unable to locate %s.' % ztc_common
+        print('Unable to locate %s.' % ztc_common)
         sys.exit(1)
 
 # Debug
 #
-print 'SOFTWARE_HOME: %s' % os.environ.get('SOFTWARE_HOME', 'Not set')
-print 'INSTANCE_HOME: %s' % os.environ.get('INSTANCE_HOME', 'Not set')
+print('SOFTWARE_HOME: %s' % os.environ.get('SOFTWARE_HOME', 'Not set'))
+print('INSTANCE_HOME: %s' % os.environ.get('INSTANCE_HOME', 'Not set'))
 sys.stdout.flush()
-
