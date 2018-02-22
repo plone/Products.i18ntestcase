@@ -1,8 +1,6 @@
 from setuptools import find_packages
 from setuptools import setup
 
-import os.path
-
 
 version = '1.4.0.dev0'
 
@@ -13,7 +11,7 @@ setup(
                 "package. It has been developed to simplify testing of "
                 "gettext i18n files for Zope products.",
     long_description=(open("README.txt").read() + "\n" +
-                      open(os.path.join("docs", "HISTORY.txt")).read()),
+                      open("CHANGES.rst").read()),
     classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 4.3",
