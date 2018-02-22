@@ -4,18 +4,10 @@ Changelog
 1.4.0 (unreleased)
 ------------------
 
-Breaking changes:
-
-- *add item here*
-
 New features:
 
 - More Python 2 / 3 compatibility adjustments
   [davilima6]
-
-Bug fixes:
-
-- *add item here*
 
 
 1.3.1 (2018-01-17)
