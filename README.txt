@@ -1,3 +1,7 @@
+This repository is archived and read only.
+
+If you want to unarchive it, then post to the [Admin & Infrastructure (AI) Team category on the Plone Community Forum](https://community.plone.org/c/aiteam/55).
+
 (c) 2005-2008, Hanno Schlichting (plone@hannosch.info)
 License: GPL
 
